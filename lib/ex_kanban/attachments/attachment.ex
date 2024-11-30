@@ -4,7 +4,7 @@ defmodule ExKanban.Attachments.Attachment do
 
   schema "attachments" do
     field :url, :string
-    field :task_id, :id
+    belongs_to :task, ExKanban.Tasks.Task
 
     timestamps(type: :utc_datetime)
   end

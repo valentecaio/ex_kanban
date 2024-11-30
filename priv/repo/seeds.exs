@@ -15,7 +15,7 @@ ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
   description: "Task 1 description",
   address: "Task 1 address",
   execution_date: ~U[2022-01-01 00:00:00Z],
-  priority: 1
+  priority: :low
 })
 
 ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
@@ -23,7 +23,7 @@ ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
   description: "Task 2 description",
   address: "Task 2 address",
   execution_date: ~U[2022-01-01 00:00:00Z],
-  priority: 2
+  priority: :medium
 })
 
 ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
@@ -31,7 +31,7 @@ ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
   description: "Task 3 description",
   address: "Task 3 address",
   execution_date: ~U[2022-01-01 00:00:00Z],
-  priority: 3
+  priority: :high
 })
 
 # task with no attachments
@@ -40,25 +40,25 @@ ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
   description: "Task 4 description",
   address: "Task 4 address",
   execution_date: ~U[2022-01-01 00:00:00Z],
-  priority: 4
+  priority: :high
 })
 
 ExKanban.Repo.insert!(%ExKanban.Attachments.Attachment{
-  url: "https://plus.unsplash.com/premium_photo-1694819488591-a43907d1c5cc",
+  url: "https://live.staticflickr.com/38/86507752_c7c9a47e2f_c.jpg",
   task_id: 1
 })
 
 ExKanban.Repo.insert!(%ExKanban.Attachments.Attachment{
-  url: "https://plus.unsplash.com/premium_photo-1694819488591-a43907d1c5cc",
+  url: "https://live.staticflickr.com/38/86507752_c7c9a47e2f_c.jpg",
   task_id: 1
 })
 
 ExKanban.Repo.insert!(%ExKanban.Attachments.Attachment{
-  url: "https://plus.unsplash.com/premium_photo-1694819488591-a43907d1c5cc",
+  url: "https://live.staticflickr.com/38/86507752_c7c9a47e2f_c.jpg",
   task_id: 2
 })
 
 ExKanban.Repo.insert!(%ExKanban.Attachments.Attachment{
-  url: "https://plus.unsplash.com/premium_photo-1694819488591-a43907d1c5cc",
+  url: "https://live.staticflickr.com/38/86507752_c7c9a47e2f_c.jpg",
   task_id: 3
 })

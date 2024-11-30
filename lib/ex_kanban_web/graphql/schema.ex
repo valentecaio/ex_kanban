@@ -1,7 +1,5 @@
 defmodule ExKanbanWeb.GraphQl.Schema do
   use Absinthe.Schema
-  import Ecto.Query
-  import Absinthe.Resolution.Helpers
 
   # datetime, naive_datetime, decimal
   import_types Absinthe.Type.Custom
@@ -14,11 +12,10 @@ defmodule ExKanbanWeb.GraphQl.Schema do
     field :description, :string
     field :address, :string
     field :execution_date, :datetime
-    field :priority, :integer
+    field :priority, :string
 
     # field :attachments, list_of(:attachment), resolve: &list_attachments/3
     field :attachments, list_of(:attachment) do
-      arg :task_id, :id
       resolve &list_attachments/3
     end
   end
@@ -27,16 +24,6 @@ defmodule ExKanbanWeb.GraphQl.Schema do
   object :attachment do
     field :id, non_null(:id)
     field :url, :string
-
-    field :task, :task do
-      resolve fn attachment, _args, _resolution ->
-        batch(
-          {__MODULE__, :list_tasks_by_ids, ExKanban.Tasks.Task},
-          attachment.task_id,
-          fn batch_results -> {:ok, Map.get(batch_results, attachment.task_id)} end
-        )
-      end
-    end
 
     # TODO: add more fields
   end
@@ -57,11 +44,5 @@ defmodule ExKanbanWeb.GraphQl.Schema do
       %ExKanban.Tasks.Task{} = task -> {:ok, task}
       _ -> {:error, :not_found}
     end
-  end
-
-  # used to batch load tasks
-  defp list_tasks_by_ids(_model, task_ids) do
-    tasks = ExKanban.Repo.all(from t in ExKanban.Tasks.Task, where: t.id in ^task_ids)
-    Map.new(tasks, fn task -> {task.id, task} end)
   end
 end

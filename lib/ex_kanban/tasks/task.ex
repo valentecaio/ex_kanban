@@ -7,7 +7,8 @@ defmodule ExKanban.Tasks.Task do
     field :description, :string
     field :execution_date, :utc_datetime
     field :name, :string
-    field :priority, :integer
+    field :priority, Ecto.Enum, values: [low: 1, medium: 2, high: 3]
+    has_many :attachments, ExKanban.Attachments.Attachment
 
     timestamps(type: :utc_datetime)
   end

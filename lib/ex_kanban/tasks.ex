@@ -24,6 +24,13 @@ defmodule ExKanban.Tasks do
   def list_tasks(args) do
     query = from(t in Task)
 
+    # search by keyword on name and description
+    # TODO: handle list of keywords
+    query =
+      if args[:search] != nil do
+        from t in query, where: ilike(t.name, ^"%#{args[:search]}%") or ilike(t.description, ^"%#{args[:search]}%")
+      end || query
+
     # filter by address
     query =
       if args[:address] != nil do
@@ -62,7 +69,7 @@ defmodule ExKanban.Tasks do
       ** (Ecto.NoResultsError)
 
   """
-  def get_task!(id), do: Repo.get!(Task, id)
+  def get_task!(id), do: Repo.get!(Task, id) |> Repo.preload(:attachments)
 
   def get_task_by_name!(name), do: Repo.get_by!(Task, name: name)
 

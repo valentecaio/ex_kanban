@@ -34,6 +34,9 @@ defmodule ExKanbanWeb.GraphQl.Schema do
       arg :address, :string
       arg :execution_date, :datetime
       arg :priority, :string
+      arg :search, :string
+      # TODO: handle list of keywords
+      # arg :search, list_of(:string)
       resolve &list_tasks/2
     end
 

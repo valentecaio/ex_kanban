@@ -5,7 +5,7 @@ defmodule ExKanbanWeb.GraphQl.Schema do
   import_types Absinthe.Type.Custom
 
   # defines a GraphQL object named "Task"
-  @desc "a task card for the kanban board"
+  @desc "A task card for the kanban board"
   object :task do
     field :id, non_null(:id)
     field :name, :string
@@ -20,7 +20,7 @@ defmodule ExKanbanWeb.GraphQl.Schema do
     end
   end
 
-  @desc "an attachment in a task card"
+  @desc "An attachment in a task card"
   object :attachment do
     field :id, non_null(:id)
     field :url, :string
@@ -29,6 +29,15 @@ defmodule ExKanbanWeb.GraphQl.Schema do
   end
 
   query do
+    @desc "List Tasks. The list may be filtered by address, execution_date, and/or priority."
+    field :list_tasks, list_of(:task) do
+      arg :address, :string
+      arg :execution_date, :datetime
+      arg :priority, :string
+      resolve &list_tasks/2
+    end
+
+    @desc "Get a Task by ID."
     field :get_task, :task do
       arg :id, non_null(:id)
       resolve &get_task/2
@@ -37,6 +46,10 @@ defmodule ExKanbanWeb.GraphQl.Schema do
 
   defp list_attachments(%ExKanban.Tasks.Task{} = task, args, _resolution) do
     {:ok, ExKanban.Attachments.list_attachments(task, args)}
+  end
+
+  defp list_tasks(args, _resolution) do
+    {:ok, ExKanban.Tasks.list_tasks(args)}
   end
 
   defp get_task(%{id: id}, _resolution) do

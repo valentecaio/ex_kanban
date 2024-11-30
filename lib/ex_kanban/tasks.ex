@@ -5,7 +5,6 @@ defmodule ExKanban.Tasks do
 
   import Ecto.Query, warn: false
   alias ExKanban.Repo
-
   alias ExKanban.Tasks.Task
 
   @doc """
@@ -19,6 +18,34 @@ defmodule ExKanban.Tasks do
   """
   def list_tasks do
     Repo.all(Task)
+    |> Repo.preload(:attachments)
+  end
+
+  def list_tasks(args) do
+    query = from(t in Task)
+
+    # filter by address
+    query =
+      if args[:address] != nil do
+        from t in query, where: t.address == ^args[:address]
+      end || query
+
+    # filter by execution_date
+    # TODO: possibly use min/max values instead of an exact date
+    query =
+      if args[:execution_date] != nil do
+        from t in query, where: t.execution_date == ^args[:execution_date]
+      end || query
+
+    # filter by priority
+    # TODO: possibly use min/max values instead of an exact priority
+    query =
+      if args[:priority] != nil do
+        from t in query, where: t.priority == ^args[:priority]
+      end || query
+
+    Repo.all(query)
+    |> Repo.preload(:attachments)
   end
 
   @doc """
@@ -37,6 +64,12 @@ defmodule ExKanban.Tasks do
   """
   def get_task!(id), do: Repo.get!(Task, id)
 
+  def get_task_by_name!(name), do: Repo.get_by!(Task, name: name)
+
+  @spec create_task(
+          :invalid
+          | %{optional(:__struct__) => none(), optional(atom() | binary()) => any()}
+        ) :: any()
   @doc """
   Creates a task.
 

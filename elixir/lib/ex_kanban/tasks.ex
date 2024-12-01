@@ -28,7 +28,9 @@ defmodule ExKanban.Tasks do
     # TODO: handle list of keywords
     query =
       if args[:search] != nil do
-        from t in query, where: ilike(t.name, ^"%#{args[:search]}%") or ilike(t.description, ^"%#{args[:search]}%")
+        from t in query,
+          where:
+            ilike(t.name, ^"%#{args[:search]}%") or ilike(t.description, ^"%#{args[:search]}%")
       end || query
 
     # filter by address

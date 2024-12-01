@@ -1,0 +1,14 @@
+{
+  "editor.formatOnSave": true,
+  "[elixir]": {
+    "editor.wordBasedSuggestions": "off",
+    "editor.formatOnSave": true,
+    // "editor.acceptSuggestionOnEnter": "smart",
+    // "editor.trimAutoWhitespace": false,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true
+  },
+  "elixirLS.dialyzerEnabled": true,
+  "elixirLS.projectDir": "./elixir",
+  "elixirLS.suggestSpecs": true
+}

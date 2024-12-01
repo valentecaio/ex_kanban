@@ -1,20 +1,28 @@
+import '../styles/Home.css'
 import React from 'react'
-import { useQuery, gql } from '@apollo/client'
+import Header from '../components/Header'
+import Board from '../components/Board'
 
-const GET_TASKS = gql`
-query {
-  listTasks(search: "dESC") {
-    id
-    name
-    description
-    executionDate
-    priority
+const Home = () => {
+  const [filters, setFilters] = React.useState(new Map())
+
+  const setFiltersAndLog = (search, date, location, priority) => {
+    var f = {
+      search: search !== "" ? search : null,
+      date: date !== "" ? date : null,
+      location: location !== "" ? location : null,
+      priority: priority !== "" ? priority : null
+    }
+    setFilters(f)
+    console.log("New filters: ", f)
   }
-}`;
 
-export default function Home() {
-  const obj = useQuery(GET_TASKS);
-  // const { loading, error, data } = useQuery(GET_TASKS)
-  console.log(obj)
-  return <div>...</div>;
+  return (
+    <div className="Home">
+      <Header setFilters={setFiltersAndLog} />
+      <Board filters={filters} />
+    </div>
+  );
 }
+
+export default Home;

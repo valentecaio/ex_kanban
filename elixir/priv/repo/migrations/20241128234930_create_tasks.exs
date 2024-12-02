@@ -6,8 +6,9 @@ defmodule ExKanban.Repo.Migrations.CreateTasks do
       add :name, :string
       add :execution_date, :utc_datetime
       add :location, :string
-      add :priority, :integer
       add :description, :string
+      add :priority, :integer
+      add :status, :integer
 
       timestamps(type: :utc_datetime)
     end

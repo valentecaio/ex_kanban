@@ -8,6 +8,7 @@ function get_tasks() {
         name
         executionDate
         priority
+        status
       }
     }`;
 }
@@ -22,6 +23,7 @@ function get_task() {
         location
         executionDate
         priority
+        status
         attachments {
           id
           url

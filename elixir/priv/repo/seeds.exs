@@ -15,7 +15,8 @@ ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
   description: "Task 1 description",
   location: "Task 1 location",
   execution_date: ~U[2022-01-01 00:00:00Z],
-  priority: :low
+  priority: :low,
+  status: :backlog
 })
 
 ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
@@ -23,7 +24,8 @@ ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
   description: "Task 2 description",
   location: "Task 2 location",
   execution_date: ~U[2022-01-01 00:00:00Z],
-  priority: :medium
+  priority: :medium,
+  status: :done
 })
 
 ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
@@ -31,7 +33,8 @@ ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
   description: "Task 3 description",
   location: "Task 3 location",
   execution_date: ~U[2022-01-01 00:00:00Z],
-  priority: :high
+  priority: :high,
+  status: :in_progress
 })
 
 # task with no attachments
@@ -40,7 +43,8 @@ ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
   description: "Task 4 description",
   location: "Task 4 location",
   execution_date: ~U[2022-01-01 00:00:00Z],
-  priority: :high
+  priority: :high,
+  status: :done
 })
 
 ExKanban.Repo.insert!(%ExKanban.Attachments.Attachment{

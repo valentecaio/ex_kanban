@@ -13,7 +13,8 @@ defmodule ExKanban.TasksTest do
       execution_date: nil,
       location: nil,
       name: nil,
-      priority: nil
+      priority: nil,
+      status: nil
     }
 
     test "list_tasks/0 returns all tasks" do
@@ -29,18 +30,20 @@ defmodule ExKanban.TasksTest do
     test "create_task/1 with valid data creates a task" do
       valid_attrs = %{
         description: "some description",
-        execution_date: ~U[2024-11-29 01:13:00Z],
+        execution_date: ~U[2024-12-01 21:43:00Z],
         location: "some location",
         name: "some name",
-        priority: 42
+        priority: 42,
+        status: 42
       }
 
       assert {:ok, %Task{} = task} = Tasks.create_task(valid_attrs)
       assert task.description == "some description"
-      assert task.execution_date == ~U[2024-11-29 01:13:00Z]
+      assert task.execution_date == ~U[2024-12-01 21:43:00Z]
       assert task.location == "some location"
       assert task.name == "some name"
       assert task.priority == 42
+      assert task.status == 42
     end
 
     test "create_task/1 with invalid data returns error changeset" do
@@ -52,18 +55,20 @@ defmodule ExKanban.TasksTest do
 
       update_attrs = %{
         description: "some updated description",
-        execution_date: ~U[2024-11-30 01:13:00Z],
+        execution_date: ~U[2024-12-02 21:43:00Z],
         location: "some updated location",
         name: "some updated name",
-        priority: 43
+        priority: 43,
+        status: 43
       }
 
       assert {:ok, %Task{} = task} = Tasks.update_task(task, update_attrs)
       assert task.description == "some updated description"
-      assert task.execution_date == ~U[2024-11-30 01:13:00Z]
+      assert task.execution_date == ~U[2024-12-02 21:43:00Z]
       assert task.location == "some updated location"
       assert task.name == "some updated name"
       assert task.priority == 43
+      assert task.status == 43
     end
 
     test "update_task/2 with invalid data returns error changeset" do

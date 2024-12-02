@@ -8,6 +8,7 @@ defmodule ExKanban.Tasks.Task do
     field :location, :string
     field :name, :string
     field :priority, Ecto.Enum, values: [low: 1, medium: 2, high: 3]
+    field :status, Ecto.Enum, values: [backlog: 1, in_progress: 2, done: 3]
     has_many :attachments, ExKanban.Attachments.Attachment
 
     timestamps(type: :utc_datetime)
@@ -16,7 +17,7 @@ defmodule ExKanban.Tasks.Task do
   @doc false
   def changeset(task, attrs) do
     task
-    |> cast(attrs, [:name, :execution_date, :location, :priority, :description])
-    |> validate_required([:name, :execution_date, :location, :priority, :description])
+    |> cast(attrs, [:name, :execution_date, :location, :priority, :description, :status])
+    |> validate_required([:name, :execution_date, :location, :priority, :description, :status])
   end
 end

@@ -13,6 +13,7 @@ defmodule ExKanbanWeb.GraphQl.Schema do
     field :location, :string
     field :execution_date, :datetime
     field :priority, :string
+    field :status, :string
 
     # field :attachments, list_of(:attachment), resolve: &list_attachments/3
     field :attachments, list_of(:attachment) do

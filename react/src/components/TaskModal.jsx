@@ -31,6 +31,7 @@ const TaskModal = ({ isOpen, task }) => {
           <p>{`Description: ${task.description}`}</p>
           <p>{`When: ${dateTimeToDate(task.executionDate)}`}</p>
           <p>{`Priority: ${task.priority}`}</p>
+          <p>{`Status: ${task.status}`}</p>
           <p>{`Attachments:`}</p>
           {task.attachments.map(a => (
             <div key={a.id}>

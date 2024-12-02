@@ -7,10 +7,8 @@ import { dateToDateTime } from '../utils/date'
 
 
 const Board = ({ filters }) => {
-  const q = queries.get_tasks_with_filters()
-  const f = filters
+  const q = queries.get_tasks()
   const { loading, error, data } = useQuery(q, { variables: filters });
-  // const { loading, error, data } = useQuery(queries.get_tasks());
   if (loading)
     return <BeatLoader />
   if (error) {

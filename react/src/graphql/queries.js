@@ -24,6 +24,10 @@ function get_tasks_with_filters() {
         location
         executionDate
         priority
+        attachments {
+          id
+          url
+        }
       }
     }`;
 }

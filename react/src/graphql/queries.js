@@ -1,18 +1,5 @@
 import { gql } from '@apollo/client'
 
-// function get_tasks(search) {
-//   return gql`
-//     query {
-//       listTasks(search: "${search}") {
-//         id
-//         name
-//         description
-//         executionDate
-//         priority
-//       }
-//     }`;
-// }
-
 function get_tasks() {
   return gql`
     query ListTasks {
@@ -20,6 +7,7 @@ function get_tasks() {
         id
         name
         description
+        location
         executionDate
         priority
       }
@@ -28,12 +16,12 @@ function get_tasks() {
 
 function get_tasks_with_filters() {
   return gql`
-    query ListTasks($search: String, $address: String, $priority: String, $executionDate: DateTime) {
-      listTasks(search: $search, address: $address, priority: $priority, executionDate: $executionDate) {
+    query ListTasks($search: String, $location: String, $priority: String, $executionDate: DateTime) {
+      listTasks(search: $search, location: $location, priority: $priority, executionDate: $executionDate) {
         id
         name
         description
-        address
+        location
         executionDate
         priority
       }

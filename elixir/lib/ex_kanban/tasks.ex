@@ -33,10 +33,10 @@ defmodule ExKanban.Tasks do
             ilike(t.name, ^"%#{args[:search]}%") or ilike(t.description, ^"%#{args[:search]}%")
       end || query
 
-    # filter by address
+    # filter by location
     query =
-      if args[:address] != nil do
-        from t in query, where: t.address == ^args[:address]
+      if args[:location] != nil do
+        from t in query, where: ilike(t.location, ^args[:location])
       end || query
 
     # filter by execution_date

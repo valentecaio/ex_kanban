@@ -13,7 +13,7 @@
 ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
   name: "Task 1",
   description: "Task 1 description",
-  address: "Task 1 address",
+  location: "Task 1 location",
   execution_date: ~U[2022-01-01 00:00:00Z],
   priority: :low
 })
@@ -21,7 +21,7 @@ ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
 ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
   name: "Task 2",
   description: "Task 2 description",
-  address: "Task 2 address",
+  location: "Task 2 location",
   execution_date: ~U[2022-01-01 00:00:00Z],
   priority: :medium
 })
@@ -29,7 +29,7 @@ ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
 ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
   name: "Task 3",
   description: "Task 3 description",
-  address: "Task 3 address",
+  location: "Task 3 location",
   execution_date: ~U[2022-01-01 00:00:00Z],
   priority: :high
 })
@@ -38,7 +38,7 @@ ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
 ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
   name: "Task 4",
   description: "Task 4 description",
-  address: "Task 4 address",
+  location: "Task 4 location",
   execution_date: ~U[2022-01-01 00:00:00Z],
   priority: :high
 })

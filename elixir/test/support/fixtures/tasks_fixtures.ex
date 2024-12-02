@@ -11,9 +11,9 @@ defmodule ExKanban.TasksFixtures do
     {:ok, task} =
       attrs
       |> Enum.into(%{
-        address: "some address",
         description: "some description",
         execution_date: ~U[2024-11-29 01:13:00Z],
+        location: "some location",
         name: "some name",
         priority: 42
       })

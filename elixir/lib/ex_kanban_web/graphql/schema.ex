@@ -10,7 +10,7 @@ defmodule ExKanbanWeb.GraphQl.Schema do
     field :id, non_null(:id)
     field :name, :string
     field :description, :string
-    field :address, :string
+    field :location, :string
     field :execution_date, :datetime
     field :priority, :string
 
@@ -29,9 +29,9 @@ defmodule ExKanbanWeb.GraphQl.Schema do
   end
 
   query do
-    @desc "List Tasks. The list may be filtered by address, execution_date, and/or priority."
+    @desc "List Tasks. The list may be filtered by location, execution_date, and/or priority."
     field :list_tasks, list_of(:task) do
-      arg :address, :string
+      arg :location, :string
       arg :execution_date, :datetime
       arg :priority, :string
       arg :search, :string

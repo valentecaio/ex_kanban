@@ -3,18 +3,13 @@ import Column from '../components/Column'
 import { useQuery } from '@apollo/client'
 import { BeatLoader } from 'react-spinners'
 import * as queries from '../graphql/queries'
+import { dateToDateTime } from '../utils/date'
 
 
 const Board = ({ filters }) => {
   const q = queries.get_tasks_with_filters()
-  const { loading, error, data } = useQuery(q, {
-    variables: {
-      search: filters.search,
-      executionDate: filters.date,
-      address: filters.location,
-      priority: filters.priority
-    }
-  });
+  const f = filters
+  const { loading, error, data } = useQuery(q, { variables: filters });
   // const { loading, error, data } = useQuery(queries.get_tasks());
   if (loading)
     return <BeatLoader />

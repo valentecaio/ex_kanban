@@ -4,6 +4,9 @@
   align-items: center;
   margin: 10px;
   width: 300px;
+  height: fit-content;
   flex-shrink: 0;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  border-radius: 10px;
+  background-color: rgb(240, 240, 240);
 }

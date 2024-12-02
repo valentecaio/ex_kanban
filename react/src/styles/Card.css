@@ -1,8 +1,13 @@
 .Card {
   /* display: flex; */
   flex-wrap: wrap;
-  justify-content: center;
-  border: 1px solid black;
   margin: 5px;
+  cursor: pointer;
   width: calc(100% - 20px);
+  background-color: #ffffff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.Card:hover {
+  background-color: #adcaff;
 }

@@ -16,9 +16,9 @@ const Board = ({ filters }) => {
 
   return (
     <div className="Board">
-      <Column tasks={data.listTasks.filter((t) => t.status === "backlog")} title="Backlog" />
-      <Column tasks={data.listTasks.filter((t) => t.status === "in_progress")} title="In Progress" />
-      <Column tasks={data.listTasks.filter((t) => t.status === "done")} title="Done" />
+      <Column tasks={data.listTasks.filter((t) => t.status === "backlog")} title="BACKLOG" />
+      <Column tasks={data.listTasks.filter((t) => t.status === "in_progress")} title="IN PROGRESS" />
+      <Column tasks={data.listTasks.filter((t) => t.status === "done")} title="DONE" />
     </div>
   );
 }

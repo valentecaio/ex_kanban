@@ -33,8 +33,8 @@ defmodule ExKanban.TasksTest do
         execution_date: ~U[2024-12-01 21:43:00Z],
         location: "some location",
         name: "some name",
-        priority: 42,
-        status: 42
+        priority: :low,
+        status: :backlog
       }
 
       assert {:ok, %Task{} = task} = Tasks.create_task(valid_attrs)
@@ -42,8 +42,8 @@ defmodule ExKanban.TasksTest do
       assert task.execution_date == ~U[2024-12-01 21:43:00Z]
       assert task.location == "some location"
       assert task.name == "some name"
-      assert task.priority == 42
-      assert task.status == 42
+      assert task.priority == :low
+      assert task.status == :backlog
     end
 
     test "create_task/1 with invalid data returns error changeset" do
@@ -58,8 +58,8 @@ defmodule ExKanban.TasksTest do
         execution_date: ~U[2024-12-02 21:43:00Z],
         location: "some updated location",
         name: "some updated name",
-        priority: 43,
-        status: 43
+        priority: :medium,
+        status: :in_progress
       }
 
       assert {:ok, %Task{} = task} = Tasks.update_task(task, update_attrs)
@@ -67,8 +67,8 @@ defmodule ExKanban.TasksTest do
       assert task.execution_date == ~U[2024-12-02 21:43:00Z]
       assert task.location == "some updated location"
       assert task.name == "some updated name"
-      assert task.priority == 43
-      assert task.status == 43
+      assert task.priority == :medium
+      assert task.status == :in_progress
     end
 
     test "update_task/2 with invalid data returns error changeset" do

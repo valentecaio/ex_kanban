@@ -3,11 +3,19 @@ defmodule ExKanban.TasksFixtures do
   This module defines test helpers for creating
   entities via the `ExKanban.Tasks` context.
   """
+  alias ExKanban.Repo
 
   @doc """
   Generate a task.
   """
   def task_fixture(attrs \\ %{}) do
+    {:ok, attachment} =
+      attrs
+      |> Enum.into(%{
+        url: "some url"
+      })
+      |> ExKanban.Attachments.create_attachment()
+
     {:ok, task} =
       attrs
       |> Enum.into(%{
@@ -15,11 +23,12 @@ defmodule ExKanban.TasksFixtures do
         execution_date: ~U[2024-12-01 21:43:00Z],
         location: "some location",
         name: "some name",
-        priority: 42,
-        status: 42
+        priority: :low,
+        status: :done,
+        attachments: [attachment]
       })
       |> ExKanban.Tasks.create_task()
 
-    task
+    task |> Repo.preload(:attachments)
   end
 end

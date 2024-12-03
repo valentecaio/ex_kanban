@@ -1,8 +1,8 @@
 # ExKanban
 
-## Introduction
-
 ExKanban is a Kanban board example that runs on a backend built with Elixir/Phoenix and PostgreSQL, and a frontend built with React. Below are the instructions to install dependencies and launch both the backend and frontend.
+
+![Screenshot](assets/Screenshot_2024-12-02_21-14-50.png)
 
 ## Directory Structure
 

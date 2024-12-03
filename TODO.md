@@ -1,9 +1,9 @@
 ## Elixir
 
-* Pagination
+* GraphQL Pagination
+* GraphQL API Documentation
 * Tests
 * Docker
-* Document API
 
 ## React
 

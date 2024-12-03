@@ -1,6 +1,12 @@
 defmodule ExKanbanWeb.GraphQl.Router do
   use Plug.Router
 
+  @moduledoc """
+  GraphQL router entrypoint.
+  Runs a testing interface in development under /graphiql.
+  Handles graphQL requests under /graphql.
+  """
+
   plug :match
   plug :dispatch
 

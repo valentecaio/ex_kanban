@@ -29,7 +29,6 @@ ExKanban.Repo.insert!(%ExKanban.Attachments.Attachment{
   task_id: 1
 })
 
-
 ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
   name: "Buy water pump",
   description: "Get specifications of necessary water pump, search for prices and buy it.",
@@ -40,10 +39,10 @@ ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
 })
 
 ExKanban.Repo.insert!(%ExKanban.Attachments.Attachment{
-  url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHFv6p8haLIlmotQY9_Hm0v7Wtauw2Y5FbJw&s",
+  url:
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHFv6p8haLIlmotQY9_Hm0v7Wtauw2Y5FbJw&s",
   task_id: 2
 })
-
 
 ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
   name: "Install water pump",
@@ -59,7 +58,6 @@ ExKanban.Repo.insert!(%ExKanban.Attachments.Attachment{
   task_id: 3
 })
 
-
 ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
   name: "Fix the roof",
   description: "There is a leak in the roof, fix it.",
@@ -73,7 +71,6 @@ ExKanban.Repo.insert!(%ExKanban.Attachments.Attachment{
   url: "https://i.ytimg.com/vi/Gg21UyM2YMw/maxresdefault.jpg",
   task_id: 4
 })
-
 
 # task with no attachments
 ExKanban.Repo.insert!(%ExKanban.Tasks.Task{
